@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- 一级占位符 -->
-    <router-view></router-view>
+    <van-nav-bar title="地图找房" left-arrow @click-left="$router.go(-1)" />
   </div>
 </template>
 
@@ -11,7 +10,8 @@ export default {
   data () {
     return {}
   },
-  methods: {},
+  methods: {
+  },
   computed: {},
   watch: {},
   filters: {},

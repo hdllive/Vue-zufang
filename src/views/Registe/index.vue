@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <!-- 一级占位符 -->
-    <router-view></router-view>
-  </div>
+  <div>hello 暂无注册哦~</div>
 </template>
 
 <script>
