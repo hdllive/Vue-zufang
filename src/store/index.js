@@ -11,7 +11,8 @@ export default new Vuex.Store({
     token: {},
     nowCity: '北京',
     nowCityId: 'AREA|88cff55c-aaa4-e2e0',
-    searchValue: '请输入小区名称'
+    searchValue: '请输入小区名称',
+    setSearchValueCity: ''
   },
   getters: {
   },
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     setSearchValue (state, payload) {
       state.searchValue = payload
+    },
+    setSearchValueCity (state, payload) {
+      state.setSearchValueCity = payload
     }
   },
   actions: {

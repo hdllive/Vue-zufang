@@ -10,7 +10,7 @@
       />
     </form>
     <van-cell-group v-for="(item, index) in searchList" :key="index">
-      <van-cell @click="getValueFn(item.communityName)">
+      <van-cell @click="getValueFn(item)">
         <template #title> {{ item.communityName }} </template>
       </van-cell>
     </van-cell-group>
@@ -36,10 +36,12 @@ export default {
       const res = await getCommunity(val)
       console.log(res)
       this.searchList = res.data.body
+      // console.log(res.data.body)
     },
     getValueFn (item) {
       console.log(item)
-      this.$store.commit('setSearchValue', item)
+      this.$store.commit('setSearchValue', item.communityName)
+      this.$store.commit('setSearchValueCity', item.community)
       this.$router.back()
     }
   },
