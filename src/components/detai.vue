@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <div class="homeItem">
-      <div class="left">
-        <img :src="'http://liufusong.top:8080' + item.houseImg" alt="" />
-      </div>
-      <div class="right">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.desc }}</p>
-        <div class="bottom">
-          <span
-            class="tubiao"
-            v-for="(item1, index) in item.tags.slice(0, 3)"
-            :key="index"
-            ><i>{{ item1 }}</i></span
-          >
-          <div class="price">
-            <span>{{ item.price }}</span> <i>元/月</i>
-          </div>
+  <div class="homeItem" @click="houseCode(item.houseCode)">
+    <div class="left">
+      <img :src="'http://liufusong.top:8080' + item.houseImg" alt="" />
+    </div>
+    <div class="right">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.desc }}</p>
+      <div class="bottom">
+        <span
+          class="tubiao"
+          v-for="(item1, index) in item.tags.slice(0, 3)"
+          :key="index"
+          ><i>{{ item1 }}</i></span
+        >
+        <div class="price">
+          <span>{{ item.price }}</span> <i>元/月</i>
         </div>
       </div>
     </div>
@@ -40,7 +38,9 @@ export default {
     }
   },
   methods: {
-
+    houseCode (code) {
+      this.$router.push(`/details/${code}`)
+    }
   },
   computed: {},
   watch: {},

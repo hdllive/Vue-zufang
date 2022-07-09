@@ -5,25 +5,40 @@
       left-arrow
       @click-left="$router.go(-1)"
     ></van-nav-bar>
-    <div class="container">
+    <div class="container" v-if="LookHousesList.length === 0">
       <img src="http://liufusong.top:8080/img/not-found.png" alt="" />
       <p>您还没有房源<a href="#">去发布房源</a>吧~</p>
     </div>
+
+    <detai
+      v-else
+      v-for="(item, index) in LookHousesList"
+      :key="index"
+      :item="item"
+    ></detai>
   </div>
 </template>
 
 <script>
+import { getLookHouses } from '@/api/my'
+import detai from '@/components/detai.vue'
 export default {
-  created () { },
+  async created () {
+    const res = await getLookHouses()
+    console.log(res)
+    this.LookHousesList = res.data.body
+  },
   data () {
-    return {}
+    return {
+      LookHousesList: []
+    }
   },
   methods: {
   },
   computed: {},
   watch: {},
   filters: {},
-  components: {}
+  components: { detai }
 }
 </script>
 

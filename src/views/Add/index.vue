@@ -151,7 +151,7 @@
     />
     <div class="yinying"></div>
     <div class="btn">
-      <button class="left">取消</button>
+      <button class="left" @click="clearFn">取消</button>
       <button class="right" @click="homeFn">提交</button>
     </div>
   </div>
@@ -298,9 +298,36 @@ export default {
       try {
         const res = await createHomes(this.data)
         console.log(res)
+        this.$dialog.confirm({
+          title: '提示',
+          message: '发布成功！',
+          cancelButtonText: '去首页',
+          confirmButtonText: '去查看'
+        })
+          .then(() => {
+            // on confirm
+            this.$router.push('/search')
+          })
+          .catch(() => {
+            // on cancel
+            this.$router.push('/home')
+          })
       } catch (err) {
         console.log(err)
       }
+    },
+    clearFn () {
+      this.$dialog.confirm({
+        title: '提示',
+        message: '放弃发布房源？'
+      })
+        .then(() => {
+          // on confirm
+          this.$router.push('/home')
+        })
+        .catch(() => {
+          // on cancel
+        })
     }
   },
   computed: {},
